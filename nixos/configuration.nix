@@ -10,6 +10,11 @@
     "nix-command"
     "flakes"
   ];
+  
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "alacritty";
+  };
 
   environment.pathsToLink = [
     "/lib/ladspa"
@@ -18,9 +23,6 @@
 
   environment.sessionVariables = {
     LADSPA_PATH = "/run/current-system/sw/lib/ladspa";
-    TEXTDOMAINDIR = "/run/current-system/sw/share/locale";
-    LANGUAGE = "pt_BR:pt";
-    LANG = "pt_BR.UTF-8";
   };
 
   time.timeZone = "America/Fortaleza";
@@ -48,11 +50,6 @@
   };
 
   programs.dconf.enable = true;
-
-  programs.nautilus-open-any-terminal = {
-    enable = true;
-    terminal = "alacritty";
-  };
 
   console.keyMap = "br-abnt2";
 
