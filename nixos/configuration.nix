@@ -25,7 +25,7 @@
     LADSPA_PATH = "/run/current-system/sw/lib/ladspa";
     TEXTDOMAINDIR = "/run/current-system/sw/share/locale";
     LANGUAGE = "pt_BR:pt";
-    LANG = "pt_BR.UTF-8"
+    LANG = "pt_BR.UTF-8";
   };
 
   time.timeZone = "America/Fortaleza";
