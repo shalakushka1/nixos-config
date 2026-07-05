@@ -25,7 +25,7 @@
           allowUnfree = true;
         };
       };
-
+    
     in {
       # Configuração do NixOS
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
