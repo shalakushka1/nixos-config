@@ -1,0 +1,20 @@
+{
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      general = {
+        import = [
+          "~/.config/alacritty/themes/noctalia.toml"
+        ];
+      };
+
+      window = {
+        opacity = 0.8;
+	padding = {
+	  x = 12;
+	  y = 12;
+	};
+      };
+    };
+  };
+}

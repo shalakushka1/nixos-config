@@ -1,0 +1,4 @@
+spawn-at-startup "noctalia"
+spawn-at-startup "easyeffects" "--gapplication-service"
+spawn-at-startup "systemctl" "--user" "import-environment" "SSH_AUTH_SOCK"
+spawn-at-startup "valent" "--gapplication-service"

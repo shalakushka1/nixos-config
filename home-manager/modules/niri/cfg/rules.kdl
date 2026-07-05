@@ -1,0 +1,97 @@
+// Firefox Picture-in-Picture float
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Steam all windows floating except main window
+window-rule {
+    match app-id=r#"^steam$"# 
+    exclude title=r#"^Steam$"#
+    open-floating true
+}
+
+// PCSX2 additional windows float
+window-rule {
+    match app-id="pcsx2-qt" title="^Configurações.*"
+    match app-id="org.duckstation.DuckStation" title="^Configurações.*"
+    default-column-width { fixed 1024; }
+    default-window-height { fixed 726; }
+    open-floating true
+}
+
+// Steam notifications
+window-rule {
+    match app-id=r#"^steam$"# title=r#"^notificationtoasts_\d+_desktop$"#
+    open-focused false
+    open-floating true
+    default-floating-position x=6 y=6 relative-to="top-right"
+}
+// Steam chat
+window-rule {
+    match app-id=r#"^steam$"# title=r#"^Lista de amigos$"#
+    open-floating true
+    default-column-width { fixed 320; }
+    default-window-height { fixed 720; }
+}
+
+// Always open fullscreen
+window-rule {
+    open-maximized true
+}
+
+window-rule {
+    geometry-corner-radius 6
+    clip-to-geometry true
+}
+
+// Floating Noctalia settings window.
+window-rule {
+  match app-id="dev.noctalia.Noctalia.Settings"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 720; }
+}
+
+// Blurred Overview Wallpaper
+layer-rule {
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
+}
+
+//Inactive 
+window-rule { 
+  match is-active=false
+  draw-border-with-background false
+  opacity 0.8
+  exclude app-id="firefox" title=r#".* - YouTube — Mozilla Firefox"#
+  exclude app-id=r#"^steam$"# title=r#"^notificationtoasts_\d+_desktop$"#
+    shadow { 
+      on 
+      spread 0 
+      softness 0 
+      offset x=0 y=0 
+      draw-behind-window true 
+    }
+}
+
+/* Apps: blur them all without xray so it looks more realistic. */
+window-rule {
+  background-effect {
+    blur true
+    xray true
+  }
+}
+
+/*
+  Noctalia
+  Disable xray on all our surfaces so it looks more realistic.
+  Noctalia publishes blur regions automatically when ext-background-effects is available.
+*/
+layer-rule {
+  match namespace="^noctalia-(|notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+    blur true
+  }
+}
